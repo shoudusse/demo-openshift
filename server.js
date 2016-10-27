@@ -13,7 +13,7 @@ if(process.env.VCAP_SERVICES) {
   // On BlueMix read connection settings from
   // VCAP_SERVICES environment variable
   var env = JSON.parse(process.env.VCAP_SERVICES);
-  credentials = env['redis-2.6'][0]['credentials'];
+  credentials = env['redis'][0]['credentials'];
 } else {
   // On localhost just hardcode the connection details
   credentials = { "host": "127.0.0.1", "port": 6379 }
