@@ -14,7 +14,7 @@ html(lang='en')
       input(id='msg', autocomplete='off', autofocus)
       button(type='submit') Send
     ul#messages
-      - for(var i=0,ln=messages.length;i<ln;i++)      
+      - for(var i=0,ln=messages.length;i<ln;i++)
         li
           .header.clearfix
             .who= messages[i].nickname
