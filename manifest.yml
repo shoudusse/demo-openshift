@@ -5,7 +5,6 @@ applications:
   domain: fr1-paas-cf-apps.fr
   instances: 1
   host: webchat
-  path: .
   command: npm start
   services:
     - redis01
