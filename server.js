@@ -58,24 +58,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res) {
   // Get the 100 most recent messages from Redis
   var messages = redisClient.lrange('messages', 0, 99, function(err, reply) {
-    if(!err) {        
+    if(!err) {
       var result = [];
       // Loop through the list, parsing each item into an object
       for(var msg in reply) result.push(JSON.parse(reply[msg]));
       // Pass the message list to the view
-      res.render('index', { messages: result });    
+      res.render('index', { messages: result });
     } else res.render('index');
   });
 });
 
 // socket.io listen for messages
-io.on('connection', function(socket) {  
-  // When a message is received, broadcast it 
+io.on('connection', function(socket) {
+  // When a message is received, broadcast it
   // to all users except the originating client
-  socket.on('msg', function(data) {      
+  socket.on('msg', function(data) {
     redisClient.lpush('messages', JSON.stringify(data));
-    redisClient.ltrim('messages', 0, 99);  
-    socket.broadcast.emit('msg', data);        
+    redisClient.ltrim('messages', 0, 99);
+    socket.broadcast.emit('msg', data);
   });
 
   // When a user joins the chat, send a notice

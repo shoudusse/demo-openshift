@@ -10,7 +10,7 @@ $(document).ready(function() {
     if('localStorage' in window) {
       localStorage.setItem('nickname', nickname);
     }
-  }  
+  }
 
   // Send message to server that user has joined
   socket.emit('join', nickname);
@@ -21,14 +21,14 @@ $(document).ready(function() {
         when = $('<div class="when">').text(new Date().toString().substr(0, 24)),
         msg = $('<div class="msg">').text(data.msg),
         header = $('<div class="header clearfix">').append(who).append(when),
-        li = $('<li>').append(header).append(msg);    
+        li = $('<li>').append(header).append(msg);
 
     msgList.prepend(li);
   };
 
   // Handle the form to submit a new message
   $('form').submit(function(e) {
-    var msgField = $('#msg'),        
+    var msgField = $('#msg'),
         data = { msg: msgField.val(), nickname: nickname, when: new Date() };
 
     e.preventDefault();
@@ -37,8 +37,8 @@ $(document).ready(function() {
     // Add message to the page
     newMessage(data);
     // Clear the message field
-    msgField.val('');    
-  });  
+    msgField.val('');
+  });
 
   // When a message is received from the server
   // add it to the page using newMessage()

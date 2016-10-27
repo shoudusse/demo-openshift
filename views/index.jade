@@ -6,14 +6,14 @@ html(lang='en')
     meta(name='viewport', content='initial-scale=1.0, width=device-width, \
       height=device-height, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
     link(rel='stylesheet', href='//cdn.jsdelivr.net/normalize/3.0.1/normalize.min.css')
-    link(rel='stylesheet', href='/stylesheets/style.css')    
+    link(rel='stylesheet', href='/stylesheets/style.css')
   body
     h1 BlueMix Chat
     form
       input(id='msg', autocomplete='off', autofocus)
       button(type='submit') Send
     ul#messages
-      - for(var i=0,ln=messages.length;i<ln;i++)      
+      - for(var i=0,ln=messages.length;i<ln;i++)
         li
           .header.clearfix
             .who= messages[i].nickname
