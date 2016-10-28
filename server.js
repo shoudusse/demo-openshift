@@ -63,8 +63,8 @@ app.get('/', function(req, res) {
       // Loop through the list, parsing each item into an object
       for(var msg in reply) result.push(JSON.parse(reply[msg]));
       // Pass the message list to the view
-      res.render('index', { messages: result });
-    } else res.render('index');
+      res.render('orange', { messages: result });
+    } else res.render('orange');
   });
 });
 
