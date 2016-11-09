@@ -21,6 +21,10 @@ head
             .options
       .inner#inner
         .content#content
+          - for(var i=0,ln=messages.length;i<ln;i++)
+            .message-wrapper.them
+              .circle-wrapper.animated.bounceIn=messages[i].nickname
+              .text-wrapper.animated.fadeIn=messages[i].msg
       .bottom#bottom
         textarea.input#input
         .send#send

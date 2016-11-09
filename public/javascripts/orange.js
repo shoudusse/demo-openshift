@@ -131,7 +131,8 @@ $(document).ready(function () {
         safeText(message.text);
         animateText();
         scrollBottom();
-        var data = { msg: message.text, nickname: message.nickname, when: new Date() };
+        var data = { msg: message.text, nickname: message.nickname, when: new Date(), senderid: socket.id };
+        console.log(socket.id);
         socket.emit('msg', data);
     }
     function buildRecieved(message) {
