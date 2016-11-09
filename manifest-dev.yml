@@ -4,7 +4,7 @@ applications:
   memory: 256M
   domain: fr1-paas-cf-apps.fr
   instances: 1
-  host: webchat
+  host: webchat-dev
   command: npm start
   services:
     - redis-dev
