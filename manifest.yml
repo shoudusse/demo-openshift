@@ -1,10 +1,10 @@
 ---
 applications:
-- name: webchat
+- name: webchat-dev
   memory: 256M
   domain: fr1-paas-cf-apps.fr
   instances: 1
   host: webchat
   command: npm start
   services:
-    - redis01
+    - redis-dev
