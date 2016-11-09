@@ -67,6 +67,9 @@ app.get('/', function(req, res) {
     } else res.render('orange');
   });
 });
+app.get('/crash', function(req, res) {
+  process.exit(1);
+});
 
 // socket.io listen for messages
 io.on('connection', function(socket) {
