@@ -68,7 +68,7 @@ app.get('/', function(req, res) {
   });
 });
 app.get('/crash', function(req, res) {
-  blob.crash();
+  process.exit(1);
 });
 
 // socket.io listen for messages
