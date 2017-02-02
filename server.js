@@ -56,6 +56,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // handle HTTP GET request to the "/" URL
 app.get('/', function(req, res) {
+
+  var host = require('os').hostname();
+
   // Get the 100 most recent messages from Redis
   var messages = redisClient.lrange('messages', 0, 99, function(err, reply) {
     if(!err) {
@@ -68,8 +71,8 @@ app.get('/', function(req, res) {
         result.push(json);
       }
       // Pass the message list to the view
-      res.render('orange', { messages: result.reverse() });
-    } else res.render('orange');
+      res.render('orange', { messages: result.reverse(), hostName: host });
+    } else res.render('orange', { hostName: host } );
   });
 });
 app.get('/crash', function(req, res) {

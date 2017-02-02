@@ -7,6 +7,12 @@ body {
   background-color: #FF5722;
 }
 
+.hostname {
+  font-weight: bold;
+  font-style: italic;
+  font-size: x-small;
+}
+
 .title {
   color: #ffffff;
   text-align: center;
