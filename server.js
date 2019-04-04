@@ -9,11 +9,13 @@ http.listen(process.env.PORT || 3000);
 var redis = require('redis');
 var credentials;
 // Check if we are in BlueMix or localhost
-if(process.env.VCAP_SERVICES) {
+if(process.env.REDIS_SERVICE_HOST) {
   // On BlueMix read connection settings from
   // VCAP_SERVICES environment variable
-  var env = JSON.parse(process.env.VCAP_SERVICES);
-  credentials = env['redis-2.6'][0]['credentials'];
+  var redis_host = process.env.REDIS_SERVICE_HOST;
+  var redis_port = process.env.REDIS_SERVICE_PORT;
+  var redis_password = process.env.REDIS_PASSWORD;
+  credentials = { "host": redis_host, "port": redis_port, "password": redis_password };
 } else {
   // On localhost just hardcode the connection details
   credentials = { "host": "127.0.0.1", "port": 6379 }
@@ -22,7 +24,11 @@ if(process.env.VCAP_SERVICES) {
 var redisClient;
 
 var connectToRedis = function() {
-  redisClient = redis.createClient(credentials.port, credentials.host);
+  redisClient = redis.createClient({
+    port: credentials.port,
+    host: credentials.host,
+    password: credentials.password
+  });
   if('password' in credentials) {
     // On BlueMix we need to authenticate against Redis
     redisClient.auth(credentials.password);
