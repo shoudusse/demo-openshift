@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-http.listen(process.env.PORT || 3000);
+http.listen(process.env.PORT || 8080);
 
 // Configure Redis client connection
 var redis = require('redis');
